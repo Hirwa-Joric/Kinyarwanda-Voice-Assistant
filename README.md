@@ -30,10 +30,33 @@ A voice assistant that processes Kinyarwanda speech, understands questions using
 ├── setup_asr.sh          # ASR model setup script
 ├── setup_fasttext.sh     # FastText model setup script
 ├── generate_samples.py   # Script to generate sample audio files
+├── audio_sample_generator.py # Script to generate answer audio files
 ├── run_demo.py           # Simplified demo application
 ├── requirements.txt      # Dependencies
 └── README.md             # Project documentation
 ```
+
+## Project Components
+
+### 1. Python Source Files
+The project contains multiple Python modules:
+- `src/asr.py` - Speech recognition module using KinyaWhisper
+- `src/nlp.py` - NLP module for text processing and matching
+- `src/tts.py` - Text-to-speech module for generating spoken responses
+- `src/app.py` - Main application with web interface
+- `run_demo.py` - Simplified demo application
+- `generate_samples.py` - Tool to generate question audio samples
+- `audio_sample_generator.py` - Tool to generate answer audio samples
+
+### 2. Audio Files
+The project includes:
+- **Input Audio Files**: 10 sample question recordings in Kinyarwanda (in `audio_samples/input/`)
+- **Output Audio Files**: 10 sample answer recordings (in `audio_samples/output/`)
+- **Transcriptions**: JSON mapping of audio files to text transcriptions (`data/transcriptions.json`)
+
+### 3. NLP Mapping
+- **Question-Answer Pairs**: 10 predefined QA pairs in Kinyarwanda (`data/qa_pairs.json`)
+- **Matching Algorithm**: Text similarity with FastText vector support (`src/nlp.py`)
 
 ## Setup Instructions
 
@@ -46,6 +69,7 @@ A voice assistant that processes Kinyarwanda speech, understands questions using
 # Generate sample audio files
 source venv/bin/activate
 python generate_samples.py
+python audio_sample_generator.py
 
 # Run the demo
 python run_demo.py
@@ -63,6 +87,7 @@ python run_demo.py
 # Generate sample audio files
 source venv/bin/activate
 python generate_samples.py
+python audio_sample_generator.py
 
 # Run the application
 python src/app.py
