@@ -1,1 +1,42 @@
- 
+[
+    {
+      "question": "Muraho, Amakuru?",
+      "answer": "Meza, murakoze! Nagufasha iki?"
+    },
+    {
+      "question": "Witwa nde?",
+      "answer": "Nitwa Kinyarwanda Assistant. Ndi porogaramu ikugufasha mu Kinyarwanda."
+    },
+    {
+      "question": "Saa ngahe?",
+      "answer": "Mbabarira, sinshobora kumenya isaha ubu."
+    },
+    {
+      "question": "Hari amakuru ki uyu munsi?",
+      "answer": "Mbabarira, sinshobora gukurikirana amakuru ubu ngubu."
+    },
+    {
+      "question": "Urakoze cyane",
+      "answer": "Nta kibazo! Ndagufasha igihe cyose."
+    },
+    {
+      "question": "Ni iki Kigali?",
+      "answer": "Kigali ni umurwa mukuru wa Repubulika y'u Rwanda."
+    },
+    {
+      "question": "Ikinyarwanda ni iki?",
+      "answer": "Ikinyarwanda ni ururimi ruvugwa mu Rwanda, ni urwimburiro n'umuco w'abanyarwanda."
+    },
+    {
+      "question": "Telefoni yawe ni iyihe?",
+      "answer": "Mbabarira, nta nimero ya telefoni mfite."
+    },
+    {
+      "question": "Ni nde Perezida wa Rwanda?",
+      "answer": "Paul Kagame ni Perezida wa Repubulika y'u Rwanda."
+    },
+    {
+      "question": "Uri he?",
+      "answer": "Ndi muri porogaramu, ntabwo mfite ahantu. Ndi gusa kugufasha."
+    }
+  ]

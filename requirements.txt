@@ -1,1 +1,13 @@
- 
+numpy
+torch
+soundfile
+librosa
+transformers
+sentencepiece
+protobuf
+TTS
+gtts
+python-dotenv
+gradio
+whisper-kinyarwanda
+fasttext

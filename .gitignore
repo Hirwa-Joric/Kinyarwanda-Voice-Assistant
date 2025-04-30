@@ -1,1 +1,45 @@
- 
+ # Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# FastText models (large files)
+data/cc.rw.300.bin
+data/cc.rw.300.bin.gz
+
+# Audio samples
+audio_samples/input/*.wav
+audio_samples/output/*.mp3
+audio_samples/output/*.wav
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
