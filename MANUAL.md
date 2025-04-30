@@ -1,11 +1,11 @@
- # Kinyarwanda Voice Assistant Manual
+# Kinyarwanda Voice Assistant Documentation
 
 ## Overview
 
-The Kinyarwanda Voice Assistant is a mini voice assistant that:
+The Kinyarwanda Voice Assistant is a voice interface that:
 1. Accepts speech input in Kinyarwanda
 2. Transcribes the speech to text using KinyaWhisper
-3. Matches the text to predefined questions using NLP
+3. Matches the text to predefined questions using NLP and vector embeddings
 4. Responds with an appropriate answer in Kinyarwanda
 5. Converts the answer back to speech
 
@@ -67,23 +67,14 @@ pip install -r requirements.txt
 python src/app.py
 ```
 
-## Project Structure
+## Architecture
 
-- `src/` - Source code
-  - `asr.py` - Speech recognition module
-  - `nlp.py` - NLP matching module
-  - `tts.py` - Text-to-speech module
-  - `app.py` - Main application
-- `data/` - Data files
-  - `qa_pairs.json` - Question-answer pairs
-- `audio_samples/` - Audio files
-  - `input/` - Input speech samples
-  - `output/` - Generated speech responses
-- `requirements.txt` - Dependencies
-- `setup.sh` - Setup script
-- `setup_minimal.sh` - Minimal setup script
-- `setup_fasttext.sh` - Script to download FastText model
-- `run_demo.py` - Simplified demo application
+The application is built with a modular architecture that separates concerns:
+
+- **ASR Module** (`src/asr.py`): Handles speech recognition using the KinyaWhisper model
+- **NLP Module** (`src/nlp.py`): Processes text and matches questions to answers using vector similarity
+- **TTS Module** (`src/tts.py`): Converts text responses to speech
+- **Web Interface** (`src/app.py`): Provides a user-friendly interface using Gradio
 
 ## Using the Voice Assistant
 
@@ -109,17 +100,21 @@ python src/app.py
 4. In the "Add QA Pairs" tab:
    - Add new question-answer pairs to the system
 
-## Sample QA Pairs
+## Extending the Assistant
 
-The system comes with several predefined question-answer pairs, including:
+### Adding New QA Pairs
 
-- "Muraho, Amakuru?" → "Meza, murakoze! Nagufasha iki?"
-- "Witwa nde?" → "Nitwa Kinyarwanda Assistant. Ndi porogaramu ikugufasha mu Kinyarwanda."
-- "Saa ngahe?" → "Mbabarira, sinshobora kumenya isaha ubu."
-- "Hari amakuru ki uyu munsi?" → "Mbabarira, sinshobora gukurikirana amakuru ubu ngubu."
-- "Urakoze cyane" → "Nta kibazo! Ndagufasha igihe cyose."
+You can add new question-answer pairs in two ways:
 
-You can add more QA pairs through the interface.
+1. Through the web interface in the "Add QA Pairs" tab
+2. By editing the `data/qa_pairs.json` file directly
+
+### Improving NLP Matching
+
+The default NLP matching uses basic text similarity. For better results:
+
+1. Install FastText: `./setup_fasttext.sh`
+2. The system will automatically use FastText embeddings for better matching
 
 ## Troubleshooting
 
@@ -143,7 +138,7 @@ You can add more QA pairs through the interface.
 
 ## Contributing
 
-To contribute to this project:
+We welcome contributions! Please see our contributing guidelines:
 
 1. Fork the repository
 2. Create a feature branch

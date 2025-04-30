@@ -1,14 +1,15 @@
 # Kinyarwanda Voice Assistant
 
-A mini voice assistant that processes Kinyarwanda speech, understands questions using NLP, and responds with voice output.
+A voice assistant that processes Kinyarwanda speech, understands questions using NLP, and responds with voice output.
 
 ## Features
 
 - Speech Recognition (ASR) using KinyaWhisper (mbazaNLP/Whisper-Small-Kinyarwanda)
-- Natural Language Processing (NLP) for question-answer matching
+- Natural Language Processing (NLP) for question-answer matching with FastText support
 - Text-to-Speech (TTS) for spoken responses
-- Simple interface for voice interaction
-- 10 predefined Kinyarwanda question-answer pairs
+- Interactive web interface for voice interaction
+- Predefined Kinyarwanda question-answer pairs
+- Expandable knowledge base
 
 ## Project Structure
 
@@ -101,20 +102,20 @@ The system includes the following Kinyarwanda QA pairs:
 ## Technologies Used
 
 - **ASR**: KinyaWhisper (mbazaNLP/Whisper-Small-Kinyarwanda) for Kinyarwanda speech recognition
-- **NLP**: Basic text similarity for question-answer matching (with optional FastText support)
+- **NLP**: Text similarity with FastText vector embedding support
 - **TTS**: gTTS (Google Text-to-Speech) for voice output
-- **UI**: Gradio for the user interface
+- **UI**: Gradio for the interactive web interface
 
-## Evaluation Criteria
+## Roadmap
 
-This project addresses the following evaluation criteria:
+- Add support for more complex conversational patterns
+- Improve speech recognition accuracy
+- Expand the knowledge base
+- Add support for more African languages
 
-1. **ASR Accuracy (25 marks)**: Utilizes the Kinyarwanda-specific KinyaWhisper model
-2. **NLP Matching (25 marks)**: Implements both basic text similarity and advanced FastText vector similarity
-3. **TTS Output (20 marks)**: Uses gTTS with French as the closest language to Kinyarwanda
-4. **Code Quality (15 marks)**: Well-structured, modular code with clear documentation
-5. **GitHub Usage (10 marks)**: Proper repository structure with all required components
-6. **Submission (5 marks)**: Complete repository with all required files
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
