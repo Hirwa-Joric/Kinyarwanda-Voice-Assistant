@@ -1,23 +1,23 @@
  """
 Automatic Speech Recognition (ASR) module using KinyaWhisper.
-This module handles the conversion of Kinyarwanda speech to text.
+This module handles the conversion of Kinyarwanda speech to text using the mbazaNLP/Whisper-Small-Kinyarwanda model.
 """
 
 import os
 import torch
 import soundfile as sf
 import librosa
-from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
+from transformers import WhisperProcessor, WhisperForConditionalGeneration, pipeline
 
 class KinyarwandaASR:
-    def __init__(self, model_name="masakhane/whisper-small-kinyarwanda"):
+    def __init__(self, model_name="mbazaNLP/Whisper-Small-Kinyarwanda"):
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
         
-        print(f"Loading ASR model on {self.device}...")
+        print(f"Loading KinyaWhisper model on {self.device}...")
         
         # Load model and processor
-        self.model = AutoModelForSpeechSeq2Seq.from_pretrained(
+        self.model = WhisperForConditionalGeneration.from_pretrained(
             model_name,
             torch_dtype=torch_dtype,
             low_cpu_mem_usage=True,
@@ -25,7 +25,13 @@ class KinyarwandaASR:
         )
         self.model.to(self.device)
         
-        self.processor = AutoProcessor.from_pretrained(model_name)
+        self.processor = WhisperProcessor.from_pretrained(model_name)
+        
+        # Force Kinyarwanda as the language
+        self.forced_decoder_ids = self.processor.get_decoder_prompt_ids(
+            language="sw",  # Use Swahili as proxy for Kinyarwanda in Whisper
+            task="transcribe"
+        )
         
         # Create pipeline
         self.pipe = pipeline(
@@ -41,7 +47,7 @@ class KinyarwandaASR:
             device=self.device,
         )
         
-        print("ASR model loaded successfully.")
+        print("KinyaWhisper model loaded successfully.")
     
     def transcribe_audio(self, audio_path):
         """
@@ -55,8 +61,11 @@ class KinyarwandaASR:
         """
         print(f"Transcribing audio: {audio_path}")
         
-        # Transcribe audio
-        result = self.pipe(audio_path)
+        # Generate transcription with forced decoder IDs
+        result = self.pipe(
+            audio_path, 
+            generate_kwargs={"forced_decoder_ids": self.forced_decoder_ids}
+        )
         transcription = result["text"]
         
         print(f"Transcription: {transcription}")
@@ -73,7 +82,11 @@ class KinyarwandaASR:
         Returns:
             str: Transcribed text
         """
-        result = self.pipe({"array": audio_array, "sampling_rate": sample_rate})
+        # Generate transcription with forced decoder IDs
+        result = self.pipe(
+            {"array": audio_array, "sampling_rate": sample_rate},
+            generate_kwargs={"forced_decoder_ids": self.forced_decoder_ids}
+        )
         return result["text"]
 
 
@@ -82,7 +95,7 @@ if __name__ == "__main__":
     asr = KinyarwandaASR()
     
     # Test with a sample audio file if available
-    sample_audio = "../audio_samples/input/sample1.wav"
+    sample_audio = "../audio_samples/input/sample1.mp3"
     if os.path.exists(sample_audio):
         transcription = asr.transcribe_audio(sample_audio)
         print(f"Sample transcription: {transcription}")

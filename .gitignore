@@ -1,4 +1,4 @@
- # Python
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -25,14 +25,29 @@ var/
 venv/
 ENV/
 
-# FastText models (large files)
+# Models and large files
 data/cc.rw.300.bin
 data/cc.rw.300.bin.gz
+# Transformer models cache
+.cache/
+.huggingface/
+# Added to exclude Hugging Face models cached by transformers
+**/models--*
+**/versions--*
+**/blobs*
+**/refs*
+**/snapshots*
 
-# Audio samples
+# Audio samples (except example files)
 audio_samples/input/*.wav
 audio_samples/output/*.mp3
 audio_samples/output/*.wav
+!audio_samples/input/examples/*.wav
+
+# Temporary files
+download_model.py
+*.tmp
+*.bak
 
 # IDE files
 .idea/
@@ -43,3 +58,10 @@ audio_samples/output/*.wav
 # OS specific files
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Local configuration
+.env
