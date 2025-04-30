@@ -120,12 +120,6 @@ The system can handle the following Kinyarwanda interactions:
 - **TTS**: Advanced speech synthesis optimized for Kinyarwanda
 - **UI**: Gradio for the interactive real-time interface
 
-## Roadmap
-
-- Enhanced conversation capabilities with context awareness
-- Expanded knowledge base coverage
-- Improved speech recognition accuracy for diverse accents
-- Support for additional Rwandan languages
 
 ## Contributing
 
